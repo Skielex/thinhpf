@@ -14,6 +14,11 @@ enum class RootOrder {
     LIFO
 };
 
+enum TermType : uint32_t {
+	SOURCE = 0,
+	SINK = 1
+};
+
 template <class Cap, LabelOrder LABEL_ORDER = LabelOrder::HIGHEST_FIRST,
     RootOrder ROOT_ORDER = RootOrder::FIFO>
 class Hpf {
@@ -23,11 +28,6 @@ class Hpf {
     struct Root;
 
 public:
-    enum TermType : uint32_t {
-        SOURCE = 0,
-        SINK = 1
-    };
-
     Hpf(size_t expectedNodes = 0, size_t expectedArcs = 0);
 
     void reserve_nodes(size_t num);
@@ -227,7 +227,7 @@ inline void Hpf<Cap, LABEL_ORDER, ROOT_ORDER>::mincut()
 }
 
 template <class Cap, LabelOrder LABEL_ORDER, RootOrder ROOT_ORDER>
-inline typename Hpf<Cap, LABEL_ORDER, ROOT_ORDER>::TermType Hpf<Cap, LABEL_ORDER, ROOT_ORDER>::what_label(
+inline typename TermType Hpf<Cap, LABEL_ORDER, ROOT_ORDER>::what_label(
     uint32_t node) const
 {
     return adjacencyList[node].label >= gap() ? SOURCE : SINK;
