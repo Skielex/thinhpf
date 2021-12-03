@@ -105,7 +105,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Skielex/thinhpf",
     packages=["thinhpf"],
-    # install_requires=["numpy"],
+    install_requires=["numpy"],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
