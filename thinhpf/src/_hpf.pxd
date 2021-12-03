@@ -33,6 +33,7 @@ cdef extern from "core/hpf.h":
         void reserve_edges(size_t num)
         uint32_t add_node(uint32_t num)
         void add_edge(uint32_t i, uint32_t j, Cap capacity)
+        void mincut()
         TermType what_label(uint32_t node) const
         Cap compute_maxflow() const
         void recover_flow()

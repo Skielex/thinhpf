@@ -32,13 +32,16 @@ cdef class Hpf<ClassNameExt>:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def add_unary_terms(self,  uint32_t[::1] i, uint32_t[::1] j, <CapType>[::1] capacity):
+    def add_edges(self,  uint32_t[::1] i, uint32_t[::1] j, <CapType>[::1] capacity):
         cdef Py_ssize_t length = i.shape[0]
 
         assert i.shape[0] == j.shape[0] == capacity.shape[0]
 
         for n in range(length):
             self.c_hpf.add_edge(i[n], j[n], capacity[n])
+
+    def mincut(self):
+        self.c_hpf.mincut()
 
     def what_label(self, uint32_t node):
         return self.c_hpf.what_label(node)
