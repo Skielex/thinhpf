@@ -1,6 +1,9 @@
 The source code is subject to the following academic license.
 Note this is not an open source license.
 
+Modifications and additions to original source code:
+Copyright © 2021 Niels Jeppesen and Patrick Møller Jensen.
+Original source code (hpf.h, previously pseudo.c):
 Copyright © 2001. The Regents of the University of California (Regents).
 All Rights Reserved.
 
