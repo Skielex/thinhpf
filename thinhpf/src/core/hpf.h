@@ -1,11 +1,8 @@
-#ifndef REIMPLS_HPF_H__
-#define REIMPLS_HPF_H__
-
+#ifndef HPF_H__
+#define HPF_H__
 
 #include <vector>
 #include <cinttypes>
-
-namespace reimpls {
 
 enum class LabelOrder {
     HIGHEST_FIRST,
@@ -929,6 +926,4 @@ inline void Hpf<Cap, LABEL_ORDER, ROOT_ORDER>::Node::addOutOfTree(Arc *out)
     numOutOfTree++;
 }
 
-} // namespace reimpls
-
-#endif // REIMPLS_HPF_H__
+#endif // HPF_H__
