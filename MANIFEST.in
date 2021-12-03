@@ -1,0 +1,5 @@
+recursive-include hpf *.py *.h *.inc *.cpp *.TXT *.md *.pxd *.pyx
+
+include setup.py
+include README.md
+include LICENSE
