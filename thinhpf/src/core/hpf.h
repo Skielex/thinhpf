@@ -227,7 +227,7 @@ inline void Hpf<Cap, LABEL_ORDER, ROOT_ORDER>::mincut()
 }
 
 template <class Cap, LabelOrder LABEL_ORDER, RootOrder ROOT_ORDER>
-inline typename TermType Hpf<Cap, LABEL_ORDER, ROOT_ORDER>::what_label(
+inline TermType Hpf<Cap, LABEL_ORDER, ROOT_ORDER>::what_label(
     uint32_t node) const
 {
     return adjacencyList[node].label >= gap() ? SOURCE : SINK;
