@@ -97,7 +97,7 @@ for file_name in glob('./thinhpf/**/*.template.pyx', recursive=True):
 
 setup(
     name="thinhpf",
-    version="0.1.0",
+    version="0.1.1",
     author="Niels Jeppesen",
     author_email="niejep@dtu.dk",
     description="A thin Python wrapper for the Hochbaum Pseudo Flow (HPF) fast s-t min-cut/max-flow algorithm",
