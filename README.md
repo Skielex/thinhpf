@@ -2,14 +2,9 @@
 Thin Python wrapper for the non-parametric Hochbaum Pseudoflow (HPF) min-cut/max-flow algorithm. The original source code by Bala Chandran and Dorit S. Hochbaum is availbable [here](https://riot.ieor.berkeley.edu/Applications/Pseudoflow/maxflow.html). The C++ code used in this wrapper has been refractored by Patrick M. Jensen and published [here](https://github.com/patmjen/maxflow_algorithms).
 
 ## Installation
-Install from repository (requires `Cython`):
 ```
-git clone https://github.com/Skielex/thinhpf
-cd thinhpf
-pip install .
+pip install thinhpf
 ```
-Package will be made available on PyPI later.
-
 ## Tiny example
 ```python
 import thinhpf
