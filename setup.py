@@ -37,6 +37,7 @@ def extensions():
             "thinhpf/src/_hpf.pyx",
         ],
         language="c++",
+        extra_compile_args=["-std=c++11"],
     )
     return cythonize([hpf_module], compiler_directives={"language_level": "3"})
 
@@ -105,7 +106,7 @@ for file_name in glob("./thinhpf/**/*.template.pyx", recursive=True):
 
 setup(
     name="thinhpf",
-    version="0.1.1",
+    version="0.1.2",
     author="Niels Jeppesen",
     author_email="niejep@dtu.dk",
     description="A thin Python wrapper for the Hochbaum Pseudo Flow (HPF) fast s-t min-cut/max-flow algorithm",
