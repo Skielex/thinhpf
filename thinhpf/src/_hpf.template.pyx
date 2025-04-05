@@ -1,9 +1,9 @@
 # distutils: language = c++
 
-from libc.stdint cimport int32_t, uint32_t
-from .src._hpf cimport *
-
 cimport cython
+from libc.stdint cimport int32_t, uint32_t
+
+from .src._hpf cimport *
 
 ctypedef int32_t CapInt32
 ctypedef float CapFloat32

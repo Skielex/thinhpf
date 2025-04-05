@@ -38,7 +38,7 @@ def extensions():
         ],
         language="c++",
     )
-    return cythonize([hpf_module], compiler_directives={'language_level': "3"})
+    return cythonize([hpf_module], compiler_directives={"language_level": "3"})
 
 
 # Create templates.
@@ -46,7 +46,9 @@ def fill_templates(file_name, new_file_name, cap_types, label_order, root_order)
     with open(file_name, "r") as fh:
         content = fh.read()
 
-    templates = re.search(r'<template>([\s\S]*)</template>', content, re.IGNORECASE).groups()
+    templates = re.search(
+        r"<template>([\s\S]*)</template>", content, re.IGNORECASE
+    ).groups()
     filled_templates = []
 
     for t in templates:
@@ -54,15 +56,15 @@ def fill_templates(file_name, new_file_name, cap_types, label_order, root_order)
 
         for ct in cap_types:
             # Insert CapType.
-            t_ct = t.replace('<CapType>', ct)
+            t_ct = t.replace("<CapType>", ct)
             for lo in label_order:
                 # Insert LabelOrder.
-                t_at = t_ct.replace('<LabelOrder>', lo)
+                t_at = t_ct.replace("<LabelOrder>", lo)
                 for ro in root_order:
                     # Insert RootOrder.
-                    t_nt = t_at.replace('<RootOrder>', ro)
+                    t_nt = t_at.replace("<RootOrder>", ro)
                     # Class name.
-                    t_nt = t_nt.replace('<ClassNameExt>', ct + lo + ro)
+                    t_nt = t_nt.replace("<ClassNameExt>", ct + lo + ro)
                     # Save full template.
                     full_template.append(t_nt)
 
@@ -72,13 +74,13 @@ def fill_templates(file_name, new_file_name, cap_types, label_order, root_order)
     new_content = content
     for t, ft in zip(templates, filled_templates):
         # Insert filled.
-        new_content = new_content.replace(t, '\n'.join(ft))
+        new_content = new_content.replace(t, "\n".join(ft))
 
     # Remove template elements.
-    new_content = new_content.replace('<template>', '')
-    new_content = new_content.replace('</template>\n', '')
+    new_content = new_content.replace("<template>", "")
+    new_content = new_content.replace("</template>\n", "")
 
-    with open(new_file_name, 'w') as fh:
+    with open(new_file_name, "w") as fh:
         fh.seek(0)
         fh.write(new_content)
         fh.truncate()
@@ -92,8 +94,14 @@ types_spec.loader.exec_module(types)
 cap_types = list(types.capacity_types_lookup.values())
 label_order = list(types.label_order_lookup.values())
 root_order = list(types.root_order_lookup.values())
-for file_name in glob('./thinhpf/**/*.template.pyx', recursive=True):
-    fill_templates(file_name, file_name.replace('.template.pyx', '.pyx'), cap_types, label_order, root_order)
+for file_name in glob("./thinhpf/**/*.template.pyx", recursive=True):
+    fill_templates(
+        file_name,
+        file_name.replace(".template.pyx", ".pyx"),
+        cap_types,
+        label_order,
+        root_order,
+    )
 
 setup(
     name="thinhpf",

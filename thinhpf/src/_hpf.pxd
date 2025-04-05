@@ -3,6 +3,7 @@
 
 from libc.stdint cimport uint32_t
 
+
 cdef extern from "core/hpf.h":
     ctypedef enum class LabelOrder:
         pass

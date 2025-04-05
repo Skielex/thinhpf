@@ -6,7 +6,12 @@ from thinhpf import hpf, types
 class TestGraph(unittest.TestCase):
     @staticmethod
     def create_hpf_type(cap_type, label_order, root_order):
-        return lambda *args: hpf(*args, capacity_type=cap_type, label_order=label_order, root_order=root_order)
+        return lambda *args: hpf(
+            *args,
+            capacity_type=cap_type,
+            label_order=label_order,
+            root_order=root_order
+        )
 
     def setUp(self):
 
@@ -15,7 +20,9 @@ class TestGraph(unittest.TestCase):
         for cap_type in types.capacity_types_lookup:
             for label_order in types.label_order_lookup:
                 for root_order in types.root_order_lookup:
-                    self.hpf_types.append(self.create_hpf_type(cap_type, label_order, root_order))
+                    self.hpf_types.append(
+                        self.create_hpf_type(cap_type, label_order, root_order)
+                    )
 
     def test_create_hpf(self):
         """Test HPF constructors."""
@@ -94,5 +101,5 @@ class TestGraph(unittest.TestCase):
             # Maximum flow: 3
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
